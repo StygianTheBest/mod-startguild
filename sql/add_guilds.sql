@@ -18,7 +18,6 @@
 -- This is the supporting SQL file for the StartGuild released with the StygianCore
 -- repack. This file creates two default guilds for both Horde and Alliance characters 
 -- to join when using the StartGuild module.
--- and are used by the module.
 --
 -- ** NOTE *
 -- ** Characters serving as Guildmaster for each guild are included in the StygianCore
