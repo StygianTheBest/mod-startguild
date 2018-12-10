@@ -56,7 +56,7 @@ SET FOREIGN_KEY_CHECKS=0;
 --
 DELETE FROM `guild` WHERE `guildid`=1;
 SET
-@Name 		:= "Sons of the Storm"
+@Name 		:= "Sons of the Storm",
 @LeaderGUID	:= 1, -- Horde
 @Info		:= "",
 @MOTD 		:= "An Horde guild based out of Thunder Bluff. Ask to visit our gaming house.",
