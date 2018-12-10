@@ -2,6 +2,7 @@
 
 # Starting Guild #
 
+
 ### Description ###
 ------------------------------------------------------------------------------------------------------------------
 This module auto-assigns new players to specific guilds.
@@ -20,8 +21,9 @@ This module auto-assigns new players to specific guilds.
 
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
-- v2017.08.01
+- v2018.12.09 - Config updated, tested, good to go
 - v2017.08.02 - Fix crash prevention when no guilds exist
+- v2017.08.01
 
 
 
@@ -50,7 +52,6 @@ This module auto-assigns new players to specific guilds.
 
 */
 
-
 #include "ScriptMgr.h"
 #include "Player.h"
 #include "GuildMgr.h"
@@ -59,15 +60,15 @@ This module auto-assigns new players to specific guilds.
 
 #define Welcome_Name "Notice"
 
-bool StartGuildEnable = 1;
-bool StartGuildAnnounceModule = 1;
+bool StartGuildEnable = true;
+bool StartGuildAnnounceModule = true;
 uint32 HordeGuild = 1;
 uint32 AllianceGuild = 2;
 
 class StartGuildConfig : public WorldScript
 {
 public:
-    StartGuildConfig() : WorldScript("StartGuildConfig_conf") { }
+    StartGuildConfig() : WorldScript("StartGuildConfig") { }
 
     void OnBeforeConfigLoad(bool reload) override
     {
@@ -81,11 +82,18 @@ public:
             sConfigMgr->LoadMore(cfg_def_file.c_str());
             sConfigMgr->LoadMore(cfg_file.c_str());
 
-            StartGuildEnable = sConfigMgr->GetBoolDefault("StartGuild.Enable", 1);
-            StartGuildAnnounceModule = sConfigMgr->GetBoolDefault("StartGuild.Announce", 1);
-            HordeGuild = sConfigMgr->GetIntDefault("StartGuild.Horde", 1);
-            AllianceGuild = sConfigMgr->GetIntDefault("StartGuild.Alliance", 2);
+            // Load Configuration Settings
+            SetInitialWorldSettings();
         }
+    }
+
+    // Load Configuration Settings
+    void SetInitialWorldSettings()
+    {
+        StartGuildEnable = sConfigMgr->GetBoolDefault("StartGuild.Enable", true);
+        StartGuildAnnounceModule = sConfigMgr->GetBoolDefault("StartGuild.Announce", true);
+        HordeGuild = sConfigMgr->GetIntDefault("StartGuild.Horde", 1);
+        AllianceGuild = sConfigMgr->GetIntDefault("StartGuild.Alliance", 2);
     }
 };
 
@@ -93,15 +101,14 @@ class StartGuildAnnounce : public PlayerScript
 {
 
 public:
-
     StartGuildAnnounce() : PlayerScript("StartGuildAnnounce") {}
 
     void OnLogin(Player* player)
     {
         // Announce Module
-        if (StartGuildEnable = true)
+        if (StartGuildEnable)
         {
-            if (StartGuildAnnounceModule = true)
+            if (StartGuildAnnounceModule)
             {
                 ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00StartGuild |rmodule.");
             }
@@ -119,7 +126,7 @@ public:
 	void OnFirstLogin(Player* player)
 	{
 		// If enabled...
-		if (StartGuildEnable = true)
+		if (StartGuildEnable)
 		{
             const uint32 GUILD_ID_ALLIANCE = AllianceGuild; //sConfigMgr->GetIntDefault("StartGuild.Alliance", 0);
             const uint32 GUILD_ID_HORDE = HordeGuild; //sConfigMgr->GetIntDefault("StartGuild.Horde", 0);

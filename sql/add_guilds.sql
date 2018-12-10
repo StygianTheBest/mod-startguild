@@ -25,7 +25,7 @@
 -- ** StygianCore repack, you will need to meet the pre-requisites outlined below
 -- ** to successfully run the StartGuild module.
 -- **
--- ** The 'leaderguid` value must be present before running worldserver.exe
+
 -- ** Pre-requisites:
 -- ** 1. Create an Horde character with ID: 1.
 -- ** 2. Create an Alliance character with ID: 2.
@@ -47,21 +47,39 @@ SET FOREIGN_KEY_CHECKS=0;
 -- GUILD
 -- ----------------------------------------------------------------------------------------------------------------
 
+--
 -- Faction: Horde
--- Name: Adventure
+-- Name: Sons of the Storm
 -- Guild GUID: 1
 -- GuildMaster GUID: 1
 -- GMName: Scara(Female Troll Warrior)
+--
 DELETE FROM `guild` WHERE `guildid`=1;
-INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, 'Adventure', 1, 166, 14, 1, 14, 44, 'Adventure is reborn! We began our grand adventure in 2006 and ended in 2011 after the Cataclysm ravaged the lands. Many moons have passed and we are reborn during the Summer Solstice Fire Festival of June 2017. Strength and Honor! May the Warsong Never Fade!', 'Welcome to Adventure!', 1498723958, 0);
+SET
+@Name 		:= "Sons of the Storm"
+@LeaderGUID	:= 1, -- Horde
+@Info		:= "",
+@MOTD 		:= "An Horde guild based out of Thunder Bluff. Ask to visit our gaming house.",
+@BankMoney 	:= 100000,
+@CreatedOn	:= 1498723958;
+INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, @Name, @LeaderGUID, 112, 3, 5, 3, 35, @Info, @MOTD, @CreatedOn, @BankMoney);
 
+--
 -- Faction: Alliance
--- Name: Caress of Steel
+-- Name: Swifty Gaming House
 -- Guild GUID: 2
 -- GuildMaster GUID: 2
 -- GMName: Tira (Female Dwarf Warrior)
+--
 DELETE FROM `guild` WHERE `guildid`=2;
-INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, 'Caress of Steel', 2, 112, 3, 5, 3, 35, 'An Alliance guild based out of Stormwind. Ask to visit our guild house.', 'Welcome to Caress of Steel', 1499669732, 0);
+SET
+@Name 		:= "Swifty Gaming House",
+@LeaderGUID	:= 2, -- Alliance
+@Info		:= "",
+@MOTD 		:= "An Alliance guild based out of Stormwind. Ask to visit our gaming house.",
+@BankMoney 	:= 100000,
+@CreatedOn	:= 1499669732;
+INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, @Name, @LeaderGUID, 112, 3, 5, 3, 35, @Info, @MOTD, @CreatedOn, @BankMoney);
 
 
 -- ----------------------------------------------------------------------------------------------------------------
@@ -121,14 +139,14 @@ CREATE TABLE `guild_bank_tab` (
 -- Records of guild_bank_tab
 -- ----------------------------
 INSERT INTO `guild_bank_tab` VALUES ('1', '0', 'Storage', 'INV_Misc_Bag_12', null);
-INSERT INTO `guild_bank_tab` VALUES ('1', '1', 'WeaponsArmor', 'INV_Shield_64', null);
-INSERT INTO `guild_bank_tab` VALUES ('1', '2', 'ScrollsReagents', 'INV_Scroll_13', null);
-INSERT INTO `guild_bank_tab` VALUES ('1', '3', 'FoodDrink', 'INV_Misc_Food_99', null);
-INSERT INTO `guild_bank_tab` VALUES ('1', '4', 'JewelryGems', 'INV_Misc_Gem_EbonDraenite_02', null);
+INSERT INTO `guild_bank_tab` VALUES ('1', '1', 'Gear', 'INV_Shield_64', null);
+INSERT INTO `guild_bank_tab` VALUES ('1', '2', 'Magic', 'INV_Scroll_13', null);
+INSERT INTO `guild_bank_tab` VALUES ('1', '3', 'Consumables', 'INV_Misc_Food_99', null);
+INSERT INTO `guild_bank_tab` VALUES ('1', '4', 'Crafting', 'INV_Misc_Gem_EbonDraenite_02', null);
 INSERT INTO `guild_bank_tab` VALUES ('1', '5', 'GuildMaster', 'INV_Misc_FireDancer_01', null);
 INSERT INTO `guild_bank_tab` VALUES ('2', '0', 'Storage', 'INV_Misc_Bag_12', null);
 INSERT INTO `guild_bank_tab` VALUES ('2', '1', 'Gear', 'INV_Shield_64', null);
-INSERT INTO `guild_bank_tab` VALUES ('2', '2', 'Enchantments', 'INV_Scroll_13', null);
+INSERT INTO `guild_bank_tab` VALUES ('2', '2', 'Magic', 'INV_Scroll_13', null);
 INSERT INTO `guild_bank_tab` VALUES ('2', '3', 'Consumables', 'INV_Misc_Food_99', null);
 INSERT INTO `guild_bank_tab` VALUES ('2', '4', 'Crafting', 'INV_Misc_Gem_EbonDraenite_02', null);
 INSERT INTO `guild_bank_tab` VALUES ('2', '5', 'GuildMaster', 'INV_Misc_FireDancer_01', null);

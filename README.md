@@ -5,9 +5,13 @@
 This module auto-assigns new players to specific guilds.
 
 - New characters are added to a specified guild on first login.
-- Config: Set ID for specific Horde and Alliance guilds
-
-
+- Config: Set ID for specific Horde and Alliance guilds.
+- Optional SQL: 
+	- Creates two characters on the default admin's account to server as guildmaster of each new guild.
+	- Creates both a Horde and Alliance guild with the previously imported characters as guildmaster.
+	- Opens all guild bank tab and sets the name, icon, and permissions of each tab.
+	- Fills the guild bank with 100 gold.
+	
 ### Data ###
 ------------------------------------------------------------------------------------------------------------------
 - Type: Player/Server
