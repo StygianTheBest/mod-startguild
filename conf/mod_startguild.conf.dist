@@ -14,14 +14,11 @@
 ###################################################################################################
 
 # Enable the module? (default: 1)
-
 StartGuild.Enable = 1
 
 # Announce the module when the player logs in? (default: 1)
-
 StartGuild.Announce = 1
 
 # The GUID for each faction's starting guild (default: Horde: 1, Alliance: 2)
-
 StartGuild.Horde = 1
 StartGuild.Alliance = 2

@@ -52,34 +52,35 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Name: Sons of the Storm
 -- Guild GUID: 1
 -- GuildMaster GUID: 1
--- GMName: Scara(Female Troll Warrior)
+-- GMName: Koiter(Male Orc Warrior)
 --
 DELETE FROM `guild` WHERE `guildid`=1;
 SET
 @Name 		:= "Sons of the Storm",
 @LeaderGUID	:= 1, -- Horde
-@Info		:= "",
-@MOTD 		:= "An Horde guild based out of Thunder Bluff. Ask to visit our gaming house.",
+@Info		:= "A Horde guild honoring the late Micahel Koiter. See you on the other side brother.",
+@MOTD 		:= "Welcome to Sons of the Storm!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1498723958;
 INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, @Name, @LeaderGUID, 112, 3, 5, 3, 35, @Info, @MOTD, @CreatedOn, @BankMoney);
 
 --
 -- Faction: Alliance
--- Name: Swifty Gaming House
+-- Name: Emerald Dreams
 -- Guild GUID: 2
 -- GuildMaster GUID: 2
--- GMName: Tira (Female Dwarf Warrior)
+-- GMName: Miasara (Female Dwarf Warrior)
 --
 DELETE FROM `guild` WHERE `guildid`=2;
 SET
-@Name 		:= "Swifty Gaming House",
+@Name 		:= "Emerald Dreams",
 @LeaderGUID	:= 2, -- Alliance
-@Info		:= "",
-@MOTD 		:= "An Alliance guild based out of Stormwind. Ask to visit our gaming house.",
+@Info		:= "An Alliance guild based out of Stormwind. Ask to visit our guild house.",
+@MOTD 		:= "Welcome to Emerald Dreams!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1499669732;
 INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, @Name, @LeaderGUID, 112, 3, 5, 3, 35, @Info, @MOTD, @CreatedOn, @BankMoney);
+
 
 
 -- ----------------------------------------------------------------------------------------------------------------
